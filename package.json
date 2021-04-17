@@ -1,6 +1,6 @@
 {
   "name": "@koffeine/rollup-plugin-postcss",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Rollup plugin for PostCSS",
   "keywords": [
     "rollup",
