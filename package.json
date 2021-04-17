@@ -1,0 +1,36 @@
+{
+  "name": "@koffeine/rollup-plugin-postcss",
+  "version": "0.0.1",
+  "description": "Rollup plugin for PostCSS",
+  "keywords": [
+    "rollup",
+    "rollup-plugin",
+    "postcss"
+  ],
+  "homepage": "https://github.com/koffeine/rollup-plugin-postcss",
+  "bugs": {
+    "url": "https://github.com/koffeine/rollup-plugin-postcss/issues"
+  },
+  "license": "MIT",
+  "author": "Kornél Horváth <kornel.horvath@me.com>",
+  "files": [
+    "lib"
+  ],
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/koffeine/rollup-plugin-postcss.git"
+  },
+  "devDependencies": {
+    "@koffeine/eslint-config": "19.0.0",
+    "eslint": "7.24.0"
+  },
+  "dependencies": {
+    "@rollup/pluginutils": "^4.0.0",
+    "concat-with-sourcemaps": "^1.1.0"
+  },
+  "peerDependencies": {
+    "rollup": "^2.9.0",
+    "postcss": "^7.0.0 || ^8.0.0"
+  }
+}
