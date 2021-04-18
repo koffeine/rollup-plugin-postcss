@@ -1,6 +1,6 @@
 'use strict';
 
-const { basename, dirname, join, relative } = require('path');
+const { basename, relative } = require('path');
 
 const { createFilter } = require('@rollup/pluginutils');
 
@@ -28,20 +28,15 @@ module.exports = ({
 			}
 
 
-			return postcss(id, code, sourcemap, plugins) // eslint-disable-line consistent-return
+			return postcss(id, code, sourcemap ? this.getCombinedSourcemap() : false, plugins) // eslint-disable-line consistent-return
 				.then((result) => {
 					if (result.map) {
-						const base = relative(process.cwd(), dirname(id));
-
 						result.map = JSON.parse(result.map);
 
-						result.map.sources = result.map.sources.map((source) => join(base, source));
+						result.map.sources = result.map.sources.map((source) => relative(process.cwd(), source));
 					}
 
-					styles[id] = {
-						code: result.code,
-						map: result.map
-					};
+					styles[id] = result;
 
 					return '';
 				});
