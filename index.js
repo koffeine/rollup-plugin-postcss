@@ -20,7 +20,7 @@ module.exports = ({
 	const styles = {};
 
 	return {
-		name: 'sass-postcss',
+		name: 'postcss',
 
 		transform(code, id) {
 			if (!filter(id)) {
