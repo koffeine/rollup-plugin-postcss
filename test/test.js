@@ -23,7 +23,7 @@ describe('without sourcemap', () => {
 
 	it('should work with Rollup & PostCSS', async() => {
 		const bundle = await rollup.rollup({
-			input: relative('fixtures/index.js'),
+			input: relative('input/index.js'),
 			plugins: [
 				postcss({
 					sourcemap: false,
@@ -47,7 +47,7 @@ describe('without sourcemap', () => {
 	it('should generate expected output', () => {
 		const actual = getAssetSource(output, 'output.css');
 
-		const expected = fs.readFileSync(relative('fixtures/without-sourcemap/output.css'), { encoding: 'utf-8' });
+		const expected = fs.readFileSync(relative('expected/without-sourcemap/output.css'), { encoding: 'utf-8' });
 
 		assert.strictEqual(actual, expected);
 	});
@@ -64,7 +64,7 @@ describe('with sourcemap', () => {
 
 	it('should work with Rollup & PostCSS', async() => {
 		const bundle = await rollup.rollup({
-			input: relative('fixtures/index.js'),
+			input: relative('input/index.js'),
 			plugins: [
 				postcss({
 					sourcemap: true,
@@ -88,7 +88,7 @@ describe('with sourcemap', () => {
 	it('should generate expected output', () => {
 		const actual = getAssetSource(output, 'output.css');
 
-		const expected = fs.readFileSync(relative('fixtures/with-sourcemap/output.css'), { encoding: 'utf-8' });
+		const expected = fs.readFileSync(relative('expected/with-sourcemap/output.css'), { encoding: 'utf-8' });
 
 		assert.strictEqual(actual, expected);
 	});
@@ -102,7 +102,7 @@ describe('with sourcemap', () => {
 	it('should generate expected sourcemap', () => {
 		const actual = getAssetSource(output, 'output.css.map');
 
-		const expected = fs.readFileSync(relative('fixtures/with-sourcemap/output.css.map'), { encoding: 'utf-8' });
+		const expected = fs.readFileSync(relative('expected/with-sourcemap/output.css.map'), { encoding: 'utf-8' });
 
 		assert.strictEqual(actual, expected);
 	});
