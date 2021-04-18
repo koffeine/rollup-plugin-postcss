@@ -1,6 +1,6 @@
 'use strict';
 
-const { basename, relative } = require('path');
+const path = require('path');
 
 const { createFilter } = require('@rollup/pluginutils');
 
@@ -11,6 +11,7 @@ module.exports = ({
 	include = /\.css/u,
 	exclude,
 	sourcemap = false,
+	sourcemapPathTransform = (sourcePath) => path.relative(process.cwd(), sourcePath),
 	plugins = [],
 	output
 } = {}) => {
@@ -33,7 +34,7 @@ module.exports = ({
 					if (result.map) {
 						result.map = JSON.parse(result.map);
 
-						result.map.sources = result.map.sources.map((source) => relative(process.cwd(), source));
+						result.map.sources = result.map.sources.map(sourcemapPathTransform);
 					}
 
 					styles[id] = result;
@@ -50,7 +51,7 @@ module.exports = ({
 			}
 
 
-			const outputBasename = basename(output);
+			const outputBasename = path.basename(output);
 
 			const { code, map } = concat(sourcemap, outputBasename, ids.map((id) => ({ id, ...styles[id] })));
 

@@ -16,7 +16,7 @@ Rollup plugin for PostCSS
 - Sourcemap support
 	- Only generates and saves sourcemap when requested by the configuration
 	- Generates correct sourcemap file that traces back to the original imported file
-	- Makes sources relative to cwd
+	- Makes sources relative to cwd by default, but this can be overridden with a custom sourcemapPathTransform function
 
 ## Installation
 
@@ -44,6 +44,10 @@ export default {
 			// whether or not to generate and save a sourcemap
 			// type: boolean
 			sourcemap: false,
+
+			// transformation to apply to each source path in a sourcemap
+			// type: (string) => string
+			sourcemapPathTransform: (sourcePath) => path.relative(process.cwd(), sourcePath),
 
 			// which PostCSS plugins to use
 			// type: array of PostCSS plugins
