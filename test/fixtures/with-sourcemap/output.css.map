@@ -1,0 +1,1 @@
+{"version":3,"sources":["test/fixtures/h1.css","test/fixtures/h2.css"],"names":[],"mappings":"AAAA,GACC,cACD,CCFA,GACC,iBACD","file":"output.css","sourcesContent":["h1 {\n\tfont-size: 2rem;\n}","h2 {\n\tfont-size: 1.75rem;\n}"]}
