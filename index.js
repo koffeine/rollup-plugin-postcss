@@ -11,7 +11,7 @@ module.exports = ({
 	include = /\.css/u,
 	exclude,
 	sourcemap = false,
-	sourcemapPathTransform = (sourcePath) => path.relative(process.cwd(), sourcePath),
+	sourcemapPathTransform = (source) => path.relative(process.cwd(), source),
 	plugins = [],
 	output
 } = {}) => {
@@ -34,7 +34,7 @@ module.exports = ({
 					if (result.map) {
 						result.map = JSON.parse(result.map);
 
-						result.map.sources = result.map.sources.map(sourcemapPathTransform);
+						result.map.sources = result.map.sources.map((source) => sourcemapPathTransform(source, id));
 					}
 
 					styles[id] = result;

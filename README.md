@@ -46,8 +46,11 @@ export default {
 			sourcemap: false,
 
 			// transformation to apply to each source path in a sourcemap
-			// type: (string) => string
-			sourcemapPathTransform: (sourcePath) => path.relative(process.cwd(), sourcePath),
+			// type: (source: string, id: string) => string
+			//     source: sourcemap source
+			//     id: module id (as reported by Rollup)
+			//     returns: transformed path
+			sourcemapPathTransform: (source) => path.relative(process.cwd(), source),
 
 			// which PostCSS plugins to use
 			// type: array of PostCSS plugins
