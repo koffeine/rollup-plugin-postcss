@@ -12,6 +12,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Added peerDependencies badge to README.md
 
+### Changed
+
+- Updated devDependencies
+
 
 ## [1.2.0] - 2021-04-18
 
