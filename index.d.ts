@@ -5,7 +5,7 @@ import { Plugin } from 'rollup';
 /**
  * Rollup plugin for PostCSS
  */
-declare function postcss(options: {
+declare const postcss: (options: {
 
 	/**
 	 * Which files should be processed by this plugin
@@ -49,6 +49,6 @@ declare function postcss(options: {
 	 */
 	output: string
 
-}): Plugin;
+}) => Plugin;
 
 export = postcss;
