@@ -5,7 +5,7 @@ const path = require('path');
 const fs = require('fs');
 
 const { rollup } = require('rollup');
-const postcss = require('../index.js');
+const postcss = require('../src/index.js');
 const cssnano = require('cssnano');
 
 const relative = (fileName) => path.join(__dirname, fileName);

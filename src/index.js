@@ -4,8 +4,8 @@ const path = require('path');
 
 const { createFilter } = require('@rollup/pluginutils');
 
-const postcss = require('./lib/postcss.js');
-const concat = require('./lib/concat.js');
+const postcss = require('./postcss.js');
+const concat = require('./concat.js');
 
 module.exports = ({
 	include = /\.css/u,
