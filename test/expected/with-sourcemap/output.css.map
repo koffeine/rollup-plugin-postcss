@@ -1,1 +1,1 @@
-{"version":3,"sources":["test/input/h1.css","test/input/h2.css"],"names":[],"mappings":"AAAA,GACC,cACD,CCFA,GACC,iBACD","file":"output.css","sourcesContent":["h1 {\n\tfont-size: 2rem;\n}","h2 {\n\tfont-size: 1.75rem;\n}"]}
+{"version":3,"sources":["test/input/h1.css","test/input/h2.css"],"names":[],"mappings":"AAAA,GACC,cACD,CCFA,GACC,iBACD","file":"output.css","sourcesContent":["h1 {\n\tfont-size: 2rem;\n}\n","h2 {\n\tfont-size: 1.75rem;\n}\n"]}
