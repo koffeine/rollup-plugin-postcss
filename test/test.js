@@ -4,23 +4,23 @@ const { assert } = require('chai');
 const path = require('path');
 const fs = require('fs');
 
-const rollup = require('rollup');
-const postcss = require('..');
+const { rollup } = require('rollup');
+const postcss = require('../index.js');
 const cssnano = require('cssnano');
 
-const relative = (fileName) => {
-	return path.join(__dirname, fileName);
-};
+const relative = (fileName) => path.join(__dirname, fileName);
 
 const getAssetSource = (assets, name) => {
-	return assets.find((asset) => asset.type === 'asset' && asset.fileName === name)?.source;
+	const found = assets.find((asset) => asset.type === 'asset' && asset.fileName === name);
+
+	return typeof found == 'undefined' ? null : found.source;
 };
 
 describe('without sourcemap', () => {
 	let output;
 
 	it('should work with Rollup & PostCSS', async() => {
-		const bundle = await rollup.rollup({
+		const bundle = await rollup({
 			input: relative('input/index.js'),
 			plugins: [
 				postcss({
@@ -39,21 +39,20 @@ describe('without sourcemap', () => {
 	it('should generate output', () => {
 		const actual = getAssetSource(output, 'output.css');
 
-		assert.isTrue(typeof actual != 'undefined');
+		assert.isNotNull(actual);
 	});
 
 	it('should generate expected output', () => {
 		const actual = getAssetSource(output, 'output.css');
-
 		const expected = fs.readFileSync(relative('expected/without-sourcemap/output.css'), { encoding: 'utf-8' }).slice(0, -1);
 
 		assert.strictEqual(actual, expected);
 	});
 
 	it('shouldn\'t generate sourcemap', () => {
-		const actualMap = getAssetSource(output, 'output.css.map');
+		const actual = getAssetSource(output, 'output.css.map');
 
-		assert.isTrue(typeof actualMap == 'undefined');
+		assert.isNull(actual);
 	});
 });
 
@@ -61,7 +60,7 @@ describe('with sourcemap', () => {
 	let output;
 
 	it('should work with Rollup & PostCSS', async() => {
-		const bundle = await rollup.rollup({
+		const bundle = await rollup({
 			input: relative('input/index.js'),
 			plugins: [
 				postcss({
@@ -80,26 +79,24 @@ describe('with sourcemap', () => {
 	it('should generate output', () => {
 		const actual = getAssetSource(output, 'output.css');
 
-		assert.isTrue(typeof actual != 'undefined');
+		assert.isNotNull(actual);
 	});
 
 	it('should generate expected output', () => {
 		const actual = getAssetSource(output, 'output.css');
-
 		const expected = fs.readFileSync(relative('expected/with-sourcemap/output.css'), { encoding: 'utf-8' }).slice(0, -1);
 
 		assert.strictEqual(actual, expected);
 	});
 
 	it('should generate sourcemap', () => {
-		const actualMap = getAssetSource(output, 'output.css.map');
+		const actual = getAssetSource(output, 'output.css.map');
 
-		assert.isTrue(typeof actualMap != 'undefined');
+		assert.isNotNull(actual);
 	});
 
 	it('should generate expected sourcemap', () => {
 		const actual = getAssetSource(output, 'output.css.map');
-
 		const expected = fs.readFileSync(relative('expected/with-sourcemap/output.css.map'), { encoding: 'utf-8' }).slice(0, -1);
 
 		assert.strictEqual(actual, expected);

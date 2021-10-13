@@ -14,7 +14,7 @@ module.exports = ({
 	sourcemapPathTransform = (source) => path.relative(process.cwd(), source),
 	plugins = [],
 	output
-} = {}) => {
+}) => {
 
 	const filter = createFilter(include, exclude);
 
@@ -32,8 +32,6 @@ module.exports = ({
 			return postcss(id, code, sourcemap ? this.getCombinedSourcemap() : false, plugins) // eslint-disable-line consistent-return
 				.then((result) => {
 					if (result.map) {
-						result.map = JSON.parse(result.map);
-
 						result.map.sources = result.map.sources.map((source) => sourcemapPathTransform(source, id));
 					}
 
