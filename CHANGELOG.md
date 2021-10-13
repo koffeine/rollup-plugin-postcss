@@ -13,12 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Added TypeScript definitions
-- Added peerDependencies badge to README.md
-
-### Changed
-
-- Updated devDependencies
+- Added TypeScript declarations
 
 
 ## [1.2.0] - 2021-04-18
@@ -35,16 +30,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Use previous sourcemap
 - Added the ability to set a custom sourcemapPathTransform function
 
-### Changed
-
-- Refactored test dirs
-
 
 ## [1.0.1] - 2021-04-18
-
-### Added
-
-- Added tests
 
 ### Fixed
 
