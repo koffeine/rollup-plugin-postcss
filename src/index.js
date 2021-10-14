@@ -1,13 +1,11 @@
-'use strict';
+import path from 'path';
 
-const path = require('path');
+import { createFilter } from '@rollup/pluginutils';
 
-const { createFilter } = require('@rollup/pluginutils');
+import postcss from './postcss.js';
+import concat from './concat.js';
 
-const postcss = require('./postcss.js');
-const concat = require('./concat.js');
-
-module.exports = ({
+export default ({
 	include = /\.css/u,
 	exclude,
 	sourcemap = false,
