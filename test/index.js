@@ -13,7 +13,7 @@ const relative = (fileName) => path.join(__dirname, fileName);
 const getAssetSource = (assets, name) => {
 	const found = assets.find((asset) => asset.type === 'asset' && asset.fileName === name);
 
-	return typeof found == 'undefined' ? null : found.source;
+	return found && found.source;
 };
 
 describe('without sourcemap', () => {
@@ -39,7 +39,7 @@ describe('without sourcemap', () => {
 	it('should generate output', () => {
 		const actual = getAssetSource(output, 'output.css');
 
-		assert.isNotNull(actual);
+		assert.isDefined(actual);
 	});
 
 	it('should generate expected output', () => {
@@ -52,7 +52,7 @@ describe('without sourcemap', () => {
 	it('shouldn\'t generate sourcemap', () => {
 		const actual = getAssetSource(output, 'output.css.map');
 
-		assert.isNull(actual);
+		assert.isUndefined(actual);
 	});
 });
 
@@ -79,7 +79,7 @@ describe('with sourcemap', () => {
 	it('should generate output', () => {
 		const actual = getAssetSource(output, 'output.css');
 
-		assert.isNotNull(actual);
+		assert.isDefined(actual);
 	});
 
 	it('should generate expected output', () => {
@@ -92,7 +92,7 @@ describe('with sourcemap', () => {
 	it('should generate sourcemap', () => {
 		const actual = getAssetSource(output, 'output.css.map');
 
-		assert.isNotNull(actual);
+		assert.isDefined(actual);
 	});
 
 	it('should generate expected sourcemap', () => {
