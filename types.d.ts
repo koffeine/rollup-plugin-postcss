@@ -51,4 +51,4 @@ declare const postcss: (options: {
 
 }) => Plugin;
 
-export = postcss;
+export default postcss;

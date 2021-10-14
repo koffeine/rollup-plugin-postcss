@@ -1,8 +1,6 @@
-'use strict';
+import postcss from 'postcss';
 
-const postcss = require('postcss');
-
-module.exports = (id, code, sourcemap, plugins) =>
+export default (id, code, sourcemap, plugins) =>
 	postcss(plugins)
 		.process(
 			code,
