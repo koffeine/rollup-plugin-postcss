@@ -2,8 +2,13 @@ import path from 'path';
 
 import { createFilter } from '@rollup/pluginutils';
 
-import postcss from './postcss.js';
-import concat from './concat.js';
+import postcss from './postcss';
+import concat from './concat';
+
+import type { Plugin } from 'rollup';
+import type { RawSourceMap } from 'source-map';
+import type { AcceptedPlugin } from 'postcss';
+import type { FilterPattern } from '@rollup/pluginutils';
 
 export default ({
 	include = /\.css/u,
@@ -12,11 +17,18 @@ export default ({
 	sourcemapPathTransform = (source) => path.relative(process.cwd(), source),
 	plugins = [],
 	output
-}) => {
+}: {
+	include?: FilterPattern,
+	exclude?: FilterPattern,
+	sourcemap: boolean,
+	sourcemapPathTransform: (source: string, id: string) => string,
+	plugins?: AcceptedPlugin[],
+	output: string
+}): Plugin => {
 
 	const filter = createFilter(include, exclude);
 
-	const styles = {};
+	const styles: { [id: string]: { code: string, map?: RawSourceMap } } = {};
 
 	return {
 		name: 'postcss',
