@@ -19,7 +19,7 @@ const getAssetSource = (assets, name) => {
 describe('without sourcemap', () => {
 	let output;
 
-	it('should work with Rollup & PostCSS', async() => {
+	it('should work with Rollup & PostCSS', async () => {
 		const bundle = await rollup({
 			input: relative('input/index.js'),
 			plugins: [
@@ -59,7 +59,7 @@ describe('without sourcemap', () => {
 describe('with sourcemap', () => {
 	let output;
 
-	it('should work with Rollup & PostCSS', async() => {
+	it('should work with Rollup & PostCSS', async () => {
 		const bundle = await rollup({
 			input: relative('input/index.js'),
 			plugins: [
