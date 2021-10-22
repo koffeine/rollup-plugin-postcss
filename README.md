@@ -29,38 +29,36 @@ npm install @koffeine/rollup-plugin-postcss postcss --save-dev
 import postcss from '@koffeine/rollup-plugin-postcss';
 
 export default {
-	// ...
-	plugins: [
-		postcss({
-			// which files should be processed by this plugin
-			// type: regular expression, minimatch pattern or an array of regular expressions and minimatch patterns
-			include: /\.css/u,
+    plugins: [
+        postcss({
+            // which files should be processed by this plugin
+            // type: regular expression, minimatch pattern or an array of regular expressions and minimatch patterns
+            include: /\.css/u,
 
-			// which files should not be processed by this plugin
-			// type: regular expression, minimatch pattern or an array of regular expressions and minimatch patterns
-			exclude: undefined,
+            // which files should not be processed by this plugin
+            // type: regular expression, minimatch pattern or an array of regular expressions and minimatch patterns
+            exclude: undefined,
 
-			// whether or not to generate and save a sourcemap
-			// type: boolean
-			sourcemap: false,
+            // whether or not to generate and save a sourcemap
+            // type: boolean
+            sourcemap: false,
 
-			// transformation to apply to each source path in a sourcemap
-			// type: (source: string, id: string) => string
-			//     source: sourcemap source
-			//     id: module id (as reported by Rollup)
-			//     returns: transformed path
-			sourcemapPathTransform: (source) => path.relative(process.cwd(), source),
+            // transformation to apply to each source path in a sourcemap
+            // type: (source: string, id: string) => string
+            //     source: sourcemap source
+            //     id: module id (as reported by Rollup)
+            //     returns: transformed path
+            sourcemapPathTransform: (source) => path.relative(process.cwd(), source),
 
-			// which PostCSS plugins to use
-			// type: array of PostCSS plugins
-			plugins: [],
+            // which PostCSS plugins to use
+            // type: array of PostCSS plugins
+            plugins: [],
 
-			// where to save the output file which is a Rollup asset relative to output.dir (required)
-			// type: string
-			output: undefined
-		})
-	]
-	// ...
+            // where to save the output file which is a Rollup asset relative to output.dir (required)
+            // type: string
+            output: undefined
+        })
+    ]
 };
 ```
 
